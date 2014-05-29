@@ -26,13 +26,13 @@ ubuntu*12.04*)
 ubuntu*14.04*)
     ldconfig -v | grep gecode &> /dev/null
     if [ $? -ne 0 ]; then
-      apt-get install build-essential
-      [ -f "gecode-3.7.3.tar.gz" ] || wget http://www.gecode.org/download/gecode-3.7.3.tar.gz
-      tar zxf gecode-3.7.3.tar.gz
-      cd gecode-3.7.3 && ./configure && make && make install
-      ldconfig
-#       template_cp "gecode_3.7.3-1_amd64.deb" /opt/srcv/
-#       dpkg -i /opt/srcv/gecode_3.7.3-1_amd64.deb
+#      apt-get install build-essential
+#      [ -f "gecode-3.7.3.tar.gz" ] || wget http://www.gecode.org/download/gecode-3.7.3.tar.gz
+#      tar zxf gecode-3.7.3.tar.gz
+#      cd gecode-3.7.3 && ./configure && make && make install
+#      ldconfig
+       template_cp "gecode_3.7.3-1_amd64.deb" /opt/srcv/
+       dpkg -i /opt/srcv/gecode_3.7.3-1_amd64.deb
     fi
 ;;
 esac
