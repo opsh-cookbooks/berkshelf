@@ -33,6 +33,8 @@ ubuntu*14.04*)
 #      ldconfig
        template_cp "gecode_3.7.3-1_amd64.deb" /opt/srcv/
        dpkg -i /opt/srcv/gecode_3.7.3-1_amd64.deb
+       ldconfig -v | grep gecode &> /dev/null
+       [ $? -ne 0 ] && echo.error "failed to install gecode_3.7.3" && exit 1
     fi
 ;;
 esac
