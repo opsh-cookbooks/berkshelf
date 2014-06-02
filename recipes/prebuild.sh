@@ -8,7 +8,8 @@ fi
 
 case "${node[os]} ${node[version]}" in
 ubuntu*)
-  apt-get update && apt-get install -y curl git vim
+  #apt-get update && apt-get install -y curl git vim
+  apt-install curl git vim
   ;;
 *)
   exit 1
@@ -32,13 +33,14 @@ ubuntu*14.04*)
 #      cd gecode-3.7.3 && ./configure && make && make install
 #      ldconfig
        template_cp "gecode_3.7.3-1_amd64.deb" /opt/srcv/
-       dpkg -i /opt/srcv/gecode_3.7.3-1_amd64.deb
+       dpkg -i /opt/srcv/gecode_3.7.3-1_ubuntu_amd64.deb
        ldconfig -v | grep gecode &> /dev/null
        [ $? -ne 0 ] && echo.error "failed to install gecode_3.7.3" && exit 1
     fi
 ;;
 esac
 
+block_append "gem: --no-ri --no-rdoc" ~/.gemrc
 
 USE_SYSTEM_GECODE=1 gem install dep-selector-libgecode --no-ri --no-rdoc
 gem install berkshelf --no-ri --no-rdoc 
