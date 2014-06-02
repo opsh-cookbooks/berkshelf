@@ -41,6 +41,7 @@ ubuntu*14.04*)
 ;;
 esac
 
+[ -f ~/.gemrc ] || touch ~/.gemrc
 block_append "gem: --no-ri --no-rdoc" ~/.gemrc
 
 USE_SYSTEM_GECODE=1 gem install dep-selector-libgecode --no-ri --no-rdoc
