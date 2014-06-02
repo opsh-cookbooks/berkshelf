@@ -32,8 +32,9 @@ ubuntu*14.04*)
 #      tar zxf gecode-3.7.3.tar.gz
 #      cd gecode-3.7.3 && ./configure && make && make install
 #      ldconfig
-       template_cp "gecode_3.7.3-1_amd64.deb" /opt/srcv/
-       dpkg -i /opt/srcv/gecode_3.7.3-1_ubuntu_amd64.deb
+       pkg_name="gecode_3.7.3-1_ubuntu_amd64.deb"
+       template_cp "$pkg_name" /opt/srcv/
+       dpkg -i /opt/srcv/$pkg_name
        ldconfig -v | grep gecode &> /dev/null
        [ $? -ne 0 ] && echo.error "failed to install gecode_3.7.3" && exit 1
     fi
