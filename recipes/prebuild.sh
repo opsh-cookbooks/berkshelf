@@ -19,7 +19,7 @@ esac
 
 case "${node[os]} ${node[version]}" in
 ubuntu*12.04*)
-    ldconfig -v | grep gecode &> /dev/null
+    ldconfig -v 2> /dev/null | grep gecode &> /dev/null
     if [ $? -ne 0 ]; then
       apt-get install -y libgecode30 libgecode-dev
     fi
@@ -35,7 +35,7 @@ ubuntu*14.04*)
        pkg_name="gecode_3.7.3-1_ubuntu_amd64.deb"
        template_cp "$pkg_name" /opt/srcv/
        dpkg -i /opt/srcv/$pkg_name
-       ldconfig -v | grep gecode &> /dev/null
+       ldconfig -v 2> /dev/null | grep gecode &> /dev/null
        [ $? -ne 0 ] && echo.error "failed to install gecode_3.7.3" && exit 1
     fi
 ;;
